@@ -1,0 +1,20 @@
+{
+    "name": "vitor/routers-phpooo",
+    "authors": [
+        {
+            "name": "vitorlima6875",
+            "email": "135673909+vitorlima6875@users.noreply.github.com"
+        }
+    ],
+    "require": {
+        "league/plates": "^3.5",
+        "symfony/var-dumper": "^7.1"
+    },
+        "autoload":{
+            "psr-4":{
+                "app\\":"app"
+            },
+            "files":[
+            ]
+        }
+    }
