@@ -1,13 +1,20 @@
 <?php
- namespace  App\Core;
+ namespace  app\core;
 
  class Router 
  {
     public static function run ()
     {
-        $RouterRegestered = new RoutersFilter;
-        $Router =  $RouterRegestered->get();
+        try {
+        $RouterRegistered = new RoutersFilter;
+        $Router =  $RouterRegistered->get();
 
-        dd($Router);
+        $controller = new controller;
+        $controller ->execute($Router);
+            
+        } catch (\Throwable $th) {
+            echo $th->getMessage();
+        }
     }
  }
+ 

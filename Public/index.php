@@ -1,11 +1,13 @@
  <?php
 
-use App\Support\RequestType;
+
+use app\core\Router;
+use app\support\RequestType;
 
  require   '../vendor/autoload.php';
  
- session_abort();
+ session_start();
+ 
+ //dd(trim(parse_url($_SERVER['REQUEST_METHOD'], PHP_URL_PATH)));
 
- dd(RequestType::get());
-
- //Router::run();
+Router::run();
