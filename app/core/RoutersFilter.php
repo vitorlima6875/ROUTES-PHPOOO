@@ -19,30 +19,44 @@ class RoutersFilter
        
     }
 
-    private  function simpleRouter()
-    {
-        //  '/login'
-        if (array_key_exists(key: $this->uri, array: $this->routesRegistered[$this->method])) {
-            return $this->routesRegistered[$this->method][$this->uri];
-        }
-        return null;
+    private function simpleRouter()
+{
+    // Verifica se a rota simples existe
+    if (array_key_exists($this->uri, $this->routesRegistered[$this->method])) {
+        return $this->routesRegistered[$this->method][$this->uri];
     }
-    
 
-    private function dynamicRouter()
-    {
-        foreach ($this->routesRegistered[$this->method] as $index => $route) {
+    return null;
+}
+
+    
+private function dynamicRouter()
+{
+    // Caso especial para a URI raiz "/"
+    if ($this->uri === '/') {
+        return null; // Não processa rotas dinâmicas para "/"
+    }
+
+    foreach ($this->routesRegistered[$this->method] as $index => $route) {
+        // Verifica apenas rotas que têm parâmetros dinâmicos
+        if (strpos($index, '[') !== false) {
+            // Escapa as barras e converte parâmetros dinâmicos para regex
             $regex = str_replace('/', '\/', ltrim($index, '/'));
-            if ($index !== '/' && preg_match("/^$regex$/", trim($this->uri, '/'))) {
-                $routerRegisteredFound = $route;
-                break;
-            } else {
-                $routerRegisteredFound = null;
+            $regex = preg_replace('/\[0-9\]\+/', '[0-9]+', $regex); // Para números
+            $regex = preg_replace('/\[a-z\]\+/', '[a-z]+', $regex); // Para letras
+
+            // Adiciona os delimitadores de regex e verifica a correspondência
+            if (preg_match("/^$regex$/", trim($this->uri, '/'))) {
+                return $route;
             }
         }
-
-        return $routerRegisteredFound;
     }
+
+    return null;
+}
+
+
+    
     
     public function get()
     {

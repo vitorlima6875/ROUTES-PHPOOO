@@ -1,10 +1,10 @@
 <?php
- namespace  App\Controllers;
+ namespace  app\Controllers;
 
- class HomeController
+ class HomeController extends controller
  {
     public function index()
     {
-         dd('index fome controler');
+         $this->view('home', ['title' => 'Home']);
     }
  }
