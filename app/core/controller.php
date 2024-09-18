@@ -15,8 +15,7 @@ class controller
         $namespace = "app\\Controllers\\";
         $controllernamespace = $namespace . $controller;
 
-        //Adiciona depuração para verificar o namespace completo
-        echo "<strong>(controllernamespace) Namespace Completo </strong>: " . $controllernamespace , "<br>",  "<strong>(method) Método Requisitado </strong>: " . $method;
+        //echo "<strong>(controllernamespace) Namespace Completo </strong>: " . $controllernamespace , "<br>",  "<strong>(method) Método Requisitado </strong>: " . $method;
         
 
         if (!class_exists($controllernamespace)) {
@@ -31,7 +30,8 @@ class controller
 
         $params = new ControllerParams;
         $params = $params->get($Router);
- if (empty($params)) {
+            
+        if (empty($params)) {
             throw new Exception("Nenhum parâmetro foi passado para o método {$method}");
         }
 

@@ -1,7 +1,7 @@
 <?php
 
 namespace app\Controllers;
-
+use app\core\request;
 
 class UserController extends Controller
 {
@@ -12,7 +12,7 @@ class UserController extends Controller
     }
     public function update($params)
     {
-        
-        dd(array($params));
+        $response = request::only(['firstName', 'lastName']);
+       dd($response);
     }
 }

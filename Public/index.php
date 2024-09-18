@@ -9,5 +9,7 @@ use app\support\RequestType;
  session_start();
  
  //dd(trim(parse_url($_SERVER['REQUEST_METHOD'], PHP_URL_PATH)));
+RequestType::get();
+ 
 
 Router::run();
