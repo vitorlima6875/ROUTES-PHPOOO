@@ -3,7 +3,7 @@ namespace   app\core;
 
 use Exception;
 
-class request 
+class Request 
 {
     public static function input($name)
     {

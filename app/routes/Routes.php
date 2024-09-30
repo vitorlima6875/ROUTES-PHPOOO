@@ -14,8 +14,8 @@ class Routes
               '/contact' => 'ContactController@index'
             ],
             'post' => [
-                '/user/update/[0-9]+' => 'UserController@update',
-                '/contact' => 'ContactController@store'
+                '/user/update' => 'userController@update',
+
             ]
         ];
     }

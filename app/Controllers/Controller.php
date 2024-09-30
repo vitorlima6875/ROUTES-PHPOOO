@@ -1,5 +1,5 @@
 <?php
-namespace   App\Controllers;
+namespace   app\Controllers;
 
 use Exception;
 use League\Plates\Engine;
@@ -12,8 +12,9 @@ abstract class Controller
         if(!file_exists($viewPath)){
             throw new Exception("a view {$view} não exite");
         }
-
+       
         $templates = new Engine("../app/Views/");
         echo $templates->render( $view, $data);
-    } 
+        
+    }  
 }

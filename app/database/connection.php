@@ -14,7 +14,7 @@ class connection
         if (self::$connection === null) {
             try {
                 // Cria a nova conexão PDO
-                self::$connection = new PDO("mysql:host=localhost;dbname=rotasphp4", "root", "1234", [
+                self::$connection = new PDO("mysql:host=localhost;dbname=rotasphp8", "root", "password", [
                     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,
                     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION // Define o modo de erro para exceções
                 ]);
